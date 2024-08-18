@@ -1,10 +1,8 @@
 package com.example.demo;
 
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,4 +28,13 @@ public class TodoController {
         todoList.add(newTodo);
         return newTodo;
     }
+
+    @GetMapping("/todos/{todoId}")
+    public ResponseEntity<Todo> getTodoId(@PathVariable Long todoId) {
+        for(Todo todo : todoId) {
+            return ResponseEntity.ok(todo);
+        }
+    }
+
+    return ResponseEntity.notFound().build();
 }
